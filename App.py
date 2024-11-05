@@ -6,7 +6,7 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 
-image = Image.open('img/realmadrid.png')
+image = Image.open('img/liverpool.png.png')
 st.set_page_config(initial_sidebar_state="collapsed", page_icon=image)
 
 logo_path = os.path.join(os.path.dirname(__file__), "img", "realmadrid.svg")
