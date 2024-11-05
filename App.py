@@ -1,41 +1,64 @@
 import streamlit as st
-from streamlit_navigation_bar import st_navbar as navbar
 from Pages import Home, Project1, Project2, Project3
+from streamlit_navigation_bar import st_navbar
+import os
+from PIL import Image
+import pandas as pd
+import numpy as np
 
-st.set_page_config (initial_sidebar_state="collapsed")
+image = Image.open('img/barca.png')
+st.set_page_config(initial_sidebar_state="collapsed", page_icon=image)
 
-pages = ["Home", "Project1", 'Project2', 'Project3']
+logo_path = os.path.join(os.path.dirname(__file__), "img", "realmadrid.svg")
+pages = [" ",'Home','Project1', 'Project2', 'Project3']
 
 styles = {
     "nav": {
-        "background-color": "rgb(123, 209, 146)",
+        "background-color": "royalblue",
+        "display": "flex",
+        "justify-content": "center"
     },
-    "div": {
-        "max-width": "32rem",
+    "img": {
+        "position": "absolute",
+        "left": "-20px",
+        "font-size": "15px",
+        "top": "4px",
+        "width": "100px",
+        "height": "40px",
     },
     "span": {
-        "border-radius": "0.5rem",
-        "color": "rgb(49, 51, 63)",
-        "margin": "0 0.125rem",
-        "padding": "0.4375rem 0.625rem",
+        "display": "block",
+        "color": "white",
+        "padding": "0.2rem 0.725rem",
+        "font-size": "14px"
     },
+
     "active": {
-        "background-color": "rgba(105, 114, 255, 0.25)",
-    },
-    "hover": {
-        "background-color": "rgba(255, 255, 255, 0.35)",  # Fixed: Converted to dictionary
-    },
+        "background-color": "white",
+        "color": "black",
+        "font-weight": "normal",
+        "padding": "14px",
+
+    }
 }
 
-page = navbar(pages, styles=styles)
+options = {
+    "show_menu": False,
+    "show_sidebar": True,
+}
+
+page = st_navbar(pages,
+    styles=styles,
+    logo_path=logo_path,
+    options=options)
 
 if page == 'Home':
     Home.Home().app()
-elif page == 'Project1':
+elif page == "Project1":
     Project1.Project1().app()
-elif page == 'Project2':
+elif page == "Project2":
     Project2.Project2().app()
-elif page == 'Project3':
+elif page == "Project3":
     Project3.Project3().app()
 else:
-    Home().Home().app()
+    Home.Home().app()
