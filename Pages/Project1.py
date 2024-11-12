@@ -3,11 +3,10 @@ import pandas as pd
 import numpy as np
 
 class Project1:
-    def __int__(self):
+    def __init__(self):
         pass
     def app(self):
-        st.write('Creation of DataFrame')
-
+        st.title('Creation of DataFrame')
         def load_data(file):
             if file is not None:
                 data = pd.read_csv(file)
@@ -18,13 +17,24 @@ class Project1:
         if upload is not None:
             df = load_data(upload)
             st.dataframe(df, height=400, width=600)
+
+            victims_killed = df['Victims Killed'].unique()
+            selected_victims = st.multiselect("Select number of killed victims", options=victims_killed,
+                                              default=victims_killed)
+
+            filtered_df = df[df['Victims Killed'].isin(selected_victims)]
+
+            st.dataframe(filtered_df, height=400, width=600)
+
         else:
             st.warning("Please upload a CSV file")
 
-        st.markdown("""<style>
+        st.markdown("""
+        <style>
         h1 {
-        color: green;
-        font-size:18px;
-        text-align:center;
+            color: green;
+            font-size:18px;
+            text-align:center;
         }
-        </style>""", unsafe_allow_html=True)
+        </style>
+        """, unsafe_allow_html=True)
