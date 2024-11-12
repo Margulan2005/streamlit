@@ -18,13 +18,16 @@ class Project1:
             df = load_data(upload)
             st.dataframe(df, height=400, width=600)
 
-            victims_killed = df['Victims Killed'].unique()
-            selected_victims = st.multiselect("Select number of killed victims", options=victims_killed,
-                                              default=victims_killed)
+            column = st.selectbox("Choose column for filter", df.columns)
 
-            filtered_df = df[df['Victims Killed'].isin(selected_victims)]
+            if column:
+                unique_values = df[column].unique()
+                selected_values = st.multiselect(f"Select values for {column}", options=unique_values,
+                                                 default=unique_values)
 
-            st.dataframe(filtered_df, height=400, width=600)
+                filtered_df = df[df[column].isin(selected_values)]
+
+                st.dataframe(filtered_df, height=400, width=600)
 
         else:
             st.warning("Please upload a CSV file")
