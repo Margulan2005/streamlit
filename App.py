@@ -14,31 +14,32 @@ pages = [" ",'Home','Project1', 'Project2', 'Project3']
 
 styles = {
     "nav": {
-        "background-color": "royalblue",
+        "background": "linear-gradient(to right, #4CAF50, #00BCD4)",  # Gradient color
         "display": "flex",
-        "justify-content": "center"
+        "justify-content": "center",
+        "padding": "10px 0",  # Extra padding for a thicker navbar
+        "border-radius": "8px",  # Rounded corners for a modern look
     },
     "img": {
         "position": "absolute",
-        "left": "-20px",
-        "font-size": "15px",
+        "left": "20px",  # Adjust logo position for better alignment
         "top": "4px",
-        "width": "100px",
+        "width": "80px",
         "height": "40px",
     },
     "span": {
         "display": "block",
-        "color": "white",
-        "padding": "0.2rem 0.725rem",
-        "font-size": "14px"
+        "color": "#FFFFFF",  # White text for readability
+        "padding": "0.5rem 1rem",  # Extra padding for larger clickable areas
+        "font-size": "16px",  # Slightly larger font size
+        "transition": "background 0.3s ease, color 0.3s ease",  # Smooth transition effect
     },
-
     "active": {
-        "background-color": "white",
-        "color": "black",
-        "font-weight": "normal",
+        "background-color": "#FFFFFF",  # White background for active tab
+        "color": "#4CAF50",  # Green text for the active tab to match gradient
+        "font-weight": "bold",
         "padding": "14px",
-
+        "border-radius": "4px",  # Slightly rounded active tab
     }
 }
 
