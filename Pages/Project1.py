@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
+#link: https://www.kaggle.com/datasets/whisperingkahuna/gunviolence1
+
 class Project1:
     def __init__(self):
         pass
